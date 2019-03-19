@@ -1,0 +1,9 @@
+.pokemon-tab {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+
+.pokemon-attribute {
+  padding: 20px;
+}
