@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import PokemonTab from './PokemonTab';
+import PokemonItem from './PokemonItem';
+import PokemonAttributes from './PokemonAttributes';
+import '../css/PokemonList.css'
+
 
 const Pokedex = require('pokeapi-js-wrapper');
 const P = new Pokedex.Pokedex();
 
-class PokeList extends Component {
+class PokemonList extends Component {
   constructor() {
     super();
     
@@ -15,8 +18,7 @@ class PokeList extends Component {
 
   componentDidMount() {
     var interval = {
-      limit: 0,
-      offset: 10
+      limit: 10, 
     }
 
     const getPokemons = P.getPokemonsList(interval)
@@ -28,11 +30,12 @@ class PokeList extends Component {
   render() {
     const { pokemons } = this.state;
     return (
-      <div>
-        {this.state.pokemons.map((pokemon, i) => <PokemonTab pokemon={pokemon} key={i} />)}
-      </div>
+      <table className='pokemon-list'>
+        <PokemonAttributes />
+        {pokemons.map((pokemon, i) => <PokemonItem pokemon={pokemon} key={i} />)}
+      </table>
     )
   }
 }
 
-export default PokeList;
+export default PokemonList;

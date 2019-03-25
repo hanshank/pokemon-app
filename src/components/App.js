@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import '../css/main.css';
-import PokeList from './PokeList';
-import AttributesTab from './AttributesTab';
-
+import PokemonList from './PokemonList';
 
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-        <AttributesTab />
-        <PokeList />
+        <PokemonList />
       </div>
     );
   }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import '../css/pokemon-tab.css';
+import '../css/pokemon-item.css';
 
 const Pokedex = require('pokeapi-js-wrapper');
 const P = new Pokedex.Pokedex();
 
 
-class PokemonTab extends Component {
+class PokemonItem extends Component {
   constructor(props) {
     super(props);
 
@@ -29,28 +29,30 @@ class PokemonTab extends Component {
 
     if (loading) return <div>Loading</div>;
 
-    console.log(pokemon.sprites.front_default);
-
-
     return(
-      <div class="pokemon-tab">
+      <tr className="pokemon-item">
       
 
-        <div className="pokemon-attribute">
+        <td className="pokemon-attribute">
           <img src={pokemon.sprites.front_default}></img>
-        </div>
+        </td>
 
-        <div className="pokemon-attribute">
+        <td className="pokemon-attribute">
           { pokemon.name }
-        </div>
-        
-        {pokemon.stats.map(stat => {
+        </td>
+
+        <td className="pokemon-attribute">
+        { pokemon.types.map(type => 
+          type.type.name
+        )}
+        </td>
+        {pokemon.stats.slice(0).reverse().map((stat, i) => {
           const { name } = stat.stat;
-          return <div className="pokemon-attribute">{`${name} ${stat.base_stat}`}</div>;
+          return <td className="pokemon-attribute" key={i}>{stat.base_stat}</td>;
           })}
-      </div>
+      </tr>
     );
   }
 }
 
-export default PokemonTab;
+export default PokemonItem;
