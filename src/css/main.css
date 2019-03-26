@@ -33,3 +33,7 @@
  .center-text {
    text-align: center;
  }
+
+ .btn, button {
+  cursor: pointer;
+ }

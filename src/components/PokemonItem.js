@@ -42,7 +42,7 @@ class PokemonItem extends Component {
     return(
       <tr className="pokemon-item">
         <td>
-          <button onClick={() => addPokemon(pokemon)}>+</button>
+          <button onClick={() => addPokemon(pokemon)} type='button'>+</button>
         </td>
         <td className="pokemon-attribute">
           <img src={pokemon.sprites.front_default}></img>

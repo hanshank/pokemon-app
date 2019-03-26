@@ -20,7 +20,7 @@ class Navbar extends Component {
                   <i className="fa fa-search"></i>
                 </button>
               </li>
-              <li><input type="text" placeholder="Search Pokemons" /></li>
+              <li><input type="text" placeholder="Search Pokemon" /></li>
             </div>
           </ul>
         </nav>
