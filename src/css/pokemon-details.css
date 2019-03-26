@@ -1,0 +1,9 @@
+.pokemon-wrapper {
+  display: flex;
+}
+
+.detail-img {
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.194);
+  padding: 30px;
+}

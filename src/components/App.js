@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../css/main.css';
 import PokemonList from './PokemonList';
 import Navbar from './Navbar';
+import PokemonDetails from './PokemonDetails';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,9 @@ class App extends Component {
             exact path='/team' 
             render={(props) => <PokemonList {...props} isMyTeamVisible={true} />}
           />
-          
+
+          <Route path='/pokemon/:name' render={(props) => <PokemonDetails {...props} />} />
+  
         </div>
       </Router>
     );

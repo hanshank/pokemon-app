@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/pokemon-item.css';
 
 const Pokedex = require('pokeapi-js-wrapper');
@@ -25,17 +26,18 @@ class PokemonItem extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log('did update');
     if (this.props.pokemon !== prevProps.pokemon ) {
       P.getPokemonByName(this.props.pokemon.name).then(res => this.setState({ 
         pokemon: res,
         loading: false, 
       }));
-    } 
+    }
   }
 
   render() {
     const { pokemon, loading } = this.state;
-    const { addPokemon, removePokemon } = this.props;
+    const { addPokemon, removePokemon, setActivePokemon } = this.props;
 
 
     if (loading) return <div>Loading</div>;
@@ -43,11 +45,14 @@ class PokemonItem extends Component {
     return(
       <tr className="pokemon-item">
         <td>
+          <Link to={`/pokemon/${pokemon.name}`} className='page-link'>
+            Details
+          </Link>
           <button onClick={() => removePokemon(pokemon)}>x</button>
           <button onClick={() => addPokemon(pokemon)}>+</button>
         </td>
         <td className="pokemon-attribute">
-          <img src={pokemon.sprites.front_default}></img>
+          <img src={pokemon.sprites.front_shiny}></img>
         </td>
 
         <td className="pokemon-attribute">
