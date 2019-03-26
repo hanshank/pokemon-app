@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import '../css/main.css';
 import PokemonList from './PokemonList';
 import Navbar from './Navbar';
@@ -11,20 +13,23 @@ class App extends Component {
     }
   }
 
-  showMyTeam() {
-    this.setState({ isMyTeamVisible: true });
-  }
-
-  hideMyTeam() {
-    this.setState({ isMyTeamVisible: false });
-  }
-
   render() {
     return (
-      <div className="App">
-        <Navbar showMyTeam={() => this.showMyTeam()} hideMyTeam={() => this.hideMyTeam()} />
-        <PokemonList isMyTeamVisible={this.state.isMyTeamVisible} />
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar showMyTeam={() => this.showMyTeam()} hideMyTeam={() => this.hideMyTeam()} />
+          
+          <Route 
+          exact path='/' 
+          component={PokemonList} 
+          />
+          <Route 
+            exact path='/team' 
+            render={(props) => <PokemonList {...props} isMyTeamVisible={true} />}
+          />
+          
+        </div>
+      </Router>
     );
   }
 }
