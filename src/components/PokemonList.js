@@ -20,6 +20,7 @@ class PokemonList extends Component {
       isMyTeamVisible: false,
     }
     this.handleAddPokemon = this.handleAddPokemon.bind(this);
+    this.handleRemovePokemon = this.handleRemovePokemon.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +54,12 @@ class PokemonList extends Component {
     console.log('Hey there active pokemon');
   }
 
+  handleRemovePokemon(selectedPokemon) {
+    const myTeam = this.state.myPokemons
+    const updatedPokemons = myTeam.filter(pokemon => pokemon.name !== selectedPokemon.name)
+    this.setState({myPokemons: updatedPokemons})
+  }
+
   render() {
     const { pokemons, myPokemons, stats } = this.state;
     const { isMyTeamVisible } = this.props;
@@ -63,7 +70,7 @@ class PokemonList extends Component {
           <h1 className="">My team</h1>
           <table className='pokemon-list'>
             <PokemonAttributes stats={stats} />
-            {myPokemons.map((pokemon, i) => <PokemonItem pokemon={pokemon} addPokemon={this.handleAddPokemon} setActivePokemon={() => this.handleSetActivePokemon()} key={i} />)}
+            {myPokemons.map((pokemon, i) => <PokemonItem pokemon={pokemon} addPokemon={this.handleAddPokemon} removePokemon={this.handleRemovePokemon} setActivePokemon={() => this.handleSetActivePokemon()} key={i} />)}
           </table>
         </div>
       )
@@ -76,7 +83,7 @@ class PokemonList extends Component {
             <PokemonAttributes stats={stats} />
           </thead>
           <tbody>
-            {pokemons.map((pokemon, i) => <PokemonItem pokemon={pokemon} addPokemon={this.handleAddPokemon} setActivePokemon={() => this.handleSetActivePokemon()} key={i} />)}
+            {pokemons.map((pokemon, i) => <PokemonItem pokemon={pokemon} addPokemon={this.handleAddPokemon} removePokemon={this.handleRemovePokemon} setActivePokemon={() => this.handleSetActivePokemon()} key={i} />)}
           </tbody>
         </table>
       </div>

@@ -37,17 +37,19 @@ class PokemonItem extends Component {
 
   render() {
     const { pokemon, loading } = this.state;
-    const { addPokemon, setActivePokemon } = this.props;
+    const { addPokemon, removePokemon, setActivePokemon } = this.props;
+
 
     if (loading) return <div>Loading</div>;
 
     return(
       <tr className="pokemon-item">
         <td>
-          <button onClick={() => addPokemon(pokemon)} type='button'>+</button>
           <Link to={`/pokemon/${pokemon.name}`} className='page-link'>
             Details
           </Link>
+          <button onClick={() => removePokemon(pokemon)}>x</button>
+          <button onClick={() => addPokemon(pokemon)}>+</button>
         </td>
         <td className="pokemon-attribute">
           <img src={pokemon.sprites.front_shiny}></img>
