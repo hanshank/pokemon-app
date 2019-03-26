@@ -3,7 +3,14 @@ import { Link } from 'react-router-dom';
 import '../css/pokemon-item.css';
 
 const Pokedex = require('pokeapi-js-wrapper');
-const P = new Pokedex.Pokedex();
+
+const options = {
+  protocol: 'https',
+  versionPath: '/api/v2/',
+  cache: true,
+}
+
+const P = new Pokedex.Pokedex(options);
 
 
 class PokemonItem extends Component {

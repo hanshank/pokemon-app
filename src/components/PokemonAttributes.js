@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import "../css/main.css";
 
 const Pokedex = require('pokeapi-js-wrapper');
-const P = new Pokedex.Pokedex();
+
+const options = {
+  protocol: 'https',
+  versionPath: '/api/v2/',
+  cache: true,
+}
+
+const P = new Pokedex.Pokedex(options);
 
 class PokemonAttributes extends Component {
   constructor(props) {
