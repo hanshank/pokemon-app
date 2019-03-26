@@ -37,3 +37,8 @@
  .btn, button {
   cursor: pointer;
  }
+
+ .page-link {
+  text-decoration: none;
+  color: black;
+ }

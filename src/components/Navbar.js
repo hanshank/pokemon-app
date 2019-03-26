@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../images/logo.png';
 import '../css/navbar.css';
 import '../css/main.css';
 
@@ -11,12 +12,12 @@ class Navbar extends Component {
     return (
       <header className="container">
         <Link to='/'>
-          <img src="./logo.png" alt="PokeAPiLogo" className="headerLogo" />
+          <img src={Logo} alt="PokeAPiLogo" className="headerLogo" />
         </Link>
         <nav>
           <ul>
             <li>
-              <Link to='/team' className='btn' >
+              <Link to='/team' className='link' >
                 My Team
               </Link>
             </li>

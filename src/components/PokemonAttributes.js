@@ -17,8 +17,6 @@ class PokemonAttributes extends Component {
     const { loading } = this.state;
     const { stats } = this.props;
 
-    console.log(stats);
-
     if (loading) {
       return <div>loading</div>;
     }
