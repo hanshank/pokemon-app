@@ -1,4 +1,4 @@
-.pokemon-item {
+/* .pokemon-item {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -10,4 +10,26 @@
    display: flex;
    justify-content: flex-start;
    flex-grow: 1;
+ } */
+
+ .container {
+  padding-left: 60px;
+  padding-right: 60px;
+ }
+
+ /* .pokemon-list {
+   padding: 30 60px;
+ } */
+
+ td, th {
+   text-align: center;
+   border: 1px solid #00000014;
+ }
+
+ tr {
+   background: rgb(241, 252, 249);
+ }
+
+ .center-text {
+   text-align: center;
  }

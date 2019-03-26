@@ -24,15 +24,26 @@ class PokemonItem extends Component {
     }));
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.pokemon !== prevProps.pokemon ) {
+      P.getPokemonByName(this.props.pokemon.name).then(res => this.setState({ 
+        pokemon: res,
+        loading: false, 
+      }));
+    } 
+  }
+
   render() {
     const { pokemon, loading } = this.state;
+    const { addPokemon } = this.props;
 
     if (loading) return <div>Loading</div>;
 
     return(
       <tr className="pokemon-item">
-      
-
+        <td>
+          <button onClick={() => addPokemon(pokemon)}>+</button>
+        </td>
         <td className="pokemon-attribute">
           <img src={pokemon.sprites.front_default}></img>
         </td>

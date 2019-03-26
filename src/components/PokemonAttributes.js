@@ -8,20 +8,16 @@ class PokemonAttributes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
       stats: [],
     }
   }
 
-  componentDidMount() {
-    P.getStatsList().then(res => this.setState({
-      stats: res.results,
-      loading: false,
-    }));
-  }
-
   render() {
-    const { stats, loading } = this.state;
+    const { loading } = this.state;
+    const { stats } = this.props;
+
+    console.log(stats);
 
     if (loading) {
       return <div>loading</div>;
@@ -29,9 +25,8 @@ class PokemonAttributes extends Component {
 
     return (   
       <tr className="pokemon-item">
-        <th className="pokemon-attribute">
-          icon
-        </th>
+      <th>Action</th>
+      <th>Icon</th>
         <th className="pokemon-attribute">
           name
         </th>
