@@ -35,13 +35,15 @@ class PokemonItem extends Component {
 
   render() {
     const { pokemon, loading } = this.state;
-    const { addPokemon } = this.props;
+    const { addPokemon, removePokemon } = this.props;
+
 
     if (loading) return <div>Loading</div>;
 
     return(
       <tr className="pokemon-item">
         <td>
+          <button onClick={() => removePokemon(pokemon)}>x</button>
           <button onClick={() => addPokemon(pokemon)}>+</button>
         </td>
         <td className="pokemon-attribute">
