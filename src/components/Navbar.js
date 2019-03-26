@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/navbar.css';
 import '../css/main.css';
 
@@ -9,12 +10,17 @@ class Navbar extends Component {
 
     return (
       <header className="container">
-        <a href="#" onClick={() => hideMyTeam()}>
+        <Link to='/'>
           <img src="./logo.png" alt="PokeAPiLogo" className="headerLogo" />
-        </a>
+        </Link>
         <nav>
           <ul>
-            <li><a className="btn" onClick={() => showMyTeam()} >My Team</a></li>
+            <li>
+              <Link to='/team' className='btn' >
+                My Team
+              </Link>
+            </li>
+            
             <div id="search-container">
               <li><button type="submit" class="searchButton">
                   <i className="fa fa-search"></i>
